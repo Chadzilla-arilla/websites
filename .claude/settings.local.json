@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)",
+      "Bash(xcodebuild test:*)",
+      "Bash(xcodebuild:*)",
+      "WebFetch(domain:developer.apple.com)",
+      "WebFetch(domain:www.apple.com)",
+      "WebFetch(domain:www.gs1.org)",
+      "WebFetch(domain:www.gtin.info)",
+      "WebFetch(domain:www.activebarcode.com)",
+      "Bash(swift build:*)",
+      "Bash(sed:*)",
+      "Bash(swift:*)",
+      "Bash(mv:*)",
+      "WebSearch",
+      "Bash(cp:*)",
+      "Bash(awk:*)",
+      "Bash(rg:*)"
+    ],
+    "deny": [],
+    "defaultMode": "acceptEdits"
+  }
+}
