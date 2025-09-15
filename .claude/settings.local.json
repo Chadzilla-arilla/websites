@@ -19,7 +19,9 @@
       "WebSearch",
       "Bash(cp:*)",
       "Bash(awk:*)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
