@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anytime Recall • Home</title>
+  <meta name="description" content="Anytime Recall - Stay informed on product safety with comprehensive barcode scanning and recall checking." />
+  <link rel="icon" href="/assets/favicon.png" />
+  <style>
+    :root{
+      --bg:#ffffff; --bg-2:#f8f9fa; --card:#ffffff; --ink:#1a202c; --muted:#6b7280; --brand:#2563eb; --accent:#0891b2; --border:#e5e7eb; --ok:#22c55e; --warn:#f59e0b;
+    }
+    html,body{background:var(--bg); color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; margin:0}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:900px; margin:0 auto; padding:24px}
+
+    /* Top Nav */
+    .nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .nav .row{display:flex; align-items:center; gap:14px; padding:10px 16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand img{width:28px; height:28px; border-radius:8px}
+    .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap}
+    .tab{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-2); transition:all 0.2s}
+    .tab[aria-current="page"]{border-color:var(--brand); background:var(--brand); color:white}
+    .tab:hover{transform:translateY(-1px)}
+
+    /* Hero Section */
+    .hero{text-align:center; padding:64px 24px; background:linear-gradient(135deg, var(--bg-2) 0%, var(--bg) 100%)}
+    .hero h1{font-size:clamp(36px, 4vw, 52px); line-height:1.2; margin:0 0 16px; color:var(--ink)}
+    .hero p{font-size:20px; color:var(--muted); margin:0 0 32px; max-width:600px; margin-left:auto; margin-right:auto}
+    .hero-buttons{display:flex; gap:16px; justify-content:center; flex-wrap:wrap}
+    .btn-primary{display:inline-block; padding:14px 28px; background:var(--brand); color:white; border-radius:8px; font-weight:600; transition:all 0.2s}
+    .btn-primary:hover{background:var(--accent); text-decoration:none; transform:translateY(-2px)}
+    .btn-secondary{display:inline-block; padding:14px 28px; border:2px solid var(--brand); color:var(--brand); border-radius:8px; font-weight:600; transition:all 0.2s}
+    .btn-secondary:hover{background:var(--brand); color:white; text-decoration:none; transform:translateY(-2px)}
+
+    /* Features Grid */
+    .features{padding:48px 0}
+    .features h2{text-align:center; font-size:32px; margin:0 0 48px; color:var(--ink)}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:24px}
+    .feature-card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; text-align:center; transition:all 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+    .feature-card:hover{transform:translateY(-4px); box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+    .feature-icon{font-size:36px; margin-bottom:16px}
+    .feature-title{font-size:18px; font-weight:600; margin:0 0 8px; color:var(--ink)}
+    .feature-desc{color:var(--muted); margin:0; font-size:14px}
+
+    /* Posts Section */
+    .posts{padding:48px 0}
+    .posts h2{font-size:28px; margin:0 0 24px; color:var(--ink)}
+    .post-list{list-style:none; padding:0; margin:0}
+    .post-item{margin:0 0 16px; padding:16px; background:var(--bg-2); border-radius:8px; transition:all 0.2s}
+    .post-item:hover{background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+    .post-link{display:flex; justify-content:space-between; align-items:center}
+    .post-title{font-weight:600; color:var(--ink)}
+    .post-date{color:var(--muted); font-size:14px}
+
+    /* Footer */
+    .footer{border-top:1px solid var(--border); padding:32px 0; margin-top:64px; text-align:center}
+    .footer p{color:var(--muted); margin:8px 0}
+  </style>
+</head>
+<body>
+  <!-- Top navigation -->
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="row wrap">
+      <a class="brand" href="/">
+        <img src="/assets/app-icon.png" alt="Anytime Recall icon" />
+        <span>Anytime Recall</span>
+      </a>
+      <div class="tabs" role="tablist">
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!posts.md" aria-current="page" aria-selected="true">Home</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!privacy.md" aria-selected="false">Privacy</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!./people/site-admin.md" aria-selected="false">Support</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/app-features.html" aria-selected="false">App Features</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Stay Informed on Product Safety</h1>
+    <p>Comprehensive barcode scanning app designed to make it easy to check for recalls across multiple US government databases.</p>
+    <div class="hero-buttons">
+      <a href="https://chadzilla-arilla.github.io/websites/app-features.html" class="btn-primary">Explore Features</a>
+      <a href="https://apps.apple.com/app/anytime-recall" class="btn-secondary">Download on App Store</a>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <!-- Features Grid -->
+    <section class="features">
+      <h2>Key Features</h2>
+      <div class="grid">
+        <div class="feature-card">
+          <div class="feature-icon">📷</div>
+          <h3 class="feature-title">Smart Scanning</h3>
+          <p class="feature-desc">Scan barcodes with camera, photos, or manual entry with real-time validation</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚠️</div>
+          <h3 class="feature-title">Recall Database</h3>
+          <p class="feature-desc">Search FDA, NHTSA, CPSC, and USDA databases for product safety recalls</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">☁️</div>
+          <h3 class="feature-title">iCloud Sync</h3>
+          <p class="feature-desc">Securely sync your data across all your devices with CloudKit</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3 class="feature-title">Privacy First</h3>
+          <p class="feature-desc">No personal data collection, no tracking, no ads - your data stays yours</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Posts Section -->
+    <section class="posts">
+      <h2>Recent Updates</h2>
+      <ul class="post-list">
+        <li class="post-item">
+          <a href="https://chadzilla-arilla.github.io/websites/#!posts/2025-05-19-future-agenda.md" class="post-link">
+            <span class="post-title">Come One Come Y'all</span>
+            <span class="post-date">May 19, 2025</span>
+          </a>
+        </li>
+        <li class="post-item">
+          <a href="https://chadzilla-arilla.github.io/websites/#!posts/PRIVACY_POLICY.md" class="post-link">
+            <span class="post-title">Privacy Policy</span>
+            <span class="post-date">July 13, 2025</span>
+          </a>
+        </li>
+        <li class="post-item">
+          <a href="https://chadzilla-arilla.github.io/websites/#!posts/EULA.md" class="post-link">
+            <span class="post-title">End User License Agreement</span>
+            <span class="post-date">July 13, 2025</span>
+          </a>
+        </li>
+        <li class="post-item">
+          <a href="https://chadzilla-arilla.github.io/websites/#!posts/LEGAL_DOCUMENTS_README.md" class="post-link">
+            <span class="post-title">Legal Documents</span>
+            <span class="post-date">July 13, 2025</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer wrap">
+    <p>&copy; 2025 Anytime Recall by William Grimm</p>
+    <p>
+      <a href="https://chadzilla-arilla.github.io/websites/#!privacy.md">Privacy Policy</a> •
+      <a href="https://chadzilla-arilla.github.io/websites/#!./people/site-admin.md">Contact Support</a>
+    </p>
+  </footer>
+</body>
+</html>
