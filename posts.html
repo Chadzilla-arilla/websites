@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anytime Recall • Posts & Updates</title>
+  <meta name="description" content="Latest updates, recall information, and educational content about product safety and recall classifications." />
+  <link rel="icon" href="res/app-icon.png" />
+  <style>
+    :root{
+      --bg:#ffffff; --bg-2:#f8f9fa; --card:#ffffff; --ink:#1a202c; --muted:#6b7280; --brand:#2563eb; --accent:#0891b2; --border:#e5e7eb; --ok:#22c55e; --warn:#f59e0b;
+    }
+    html,body{background:var(--bg); color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; margin:0}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:900px; margin:0 auto; padding:24px}
+
+    /* Top Nav */
+    .nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .nav .row{display:flex; align-items:center; gap:14px; padding:10px 16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand img{width:28px; height:28px; border-radius:8px}
+    .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap}
+    .tab{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-2); transition:all 0.2s}
+    .tab[aria-current="page"]{border-color:var(--brand); background:var(--brand); color:white}
+    .tab:hover{transform:translateY(-1px)}
+
+    /* Content */
+    .hero{text-align:center; padding:48px 24px; background:linear-gradient(135deg, var(--bg-2) 0%, var(--bg) 100%)}
+    .hero h1{font-size:clamp(32px, 3vw, 42px); line-height:1.2; margin:0 0 16px; color:var(--ink)}
+    .hero p{font-size:18px; color:var(--muted); margin:0 0 32px}
+
+    .posts-grid{display:grid; gap:24px; margin:32px 0}
+    .post-card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px; transition:all 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+    .post-card:hover{transform:translateY(-4px); box-shadow:0 8px 25px rgba(0,0,0,0.1)}
+    .post-header{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px}
+    .post-title{font-size:20px; font-weight:700; margin:0; color:var(--ink)}
+    .post-date{color:var(--muted); font-size:14px}
+    .post-excerpt{color:var(--muted); margin:12px 0 16px; line-height:1.6}
+    .post-tags{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{display:inline-block; padding:4px 12px; background:var(--bg-2); border:1px solid var(--border); border-radius:20px; font-size:12px; color:var(--muted)}
+    .tag.featured{background:var(--brand); color:white; border-color:var(--brand)}
+    .read-more{display:inline-block; margin-top:16px; padding:8px 16px; background:var(--brand); color:white; border-radius:6px; font-weight:600; transition:all 0.2s}
+    .read-more:hover{background:var(--accent); text-decoration:none; transform:translateY(-1px)}
+  </style>
+</head>
+<body>
+  <!-- Top navigation -->
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="row wrap">
+      <a class="brand" href="home.html">
+        <img src="res/app-icon.png" alt="Anytime Recall icon" />
+        <span>Anytime Recall</span>
+      </a>
+      <div class="tabs" role="tablist">
+        <a class="tab" role="tab" href="home.html" aria-selected="false">Home</a>
+        <a class="tab" role="tab" href="privacy.html" aria-selected="false">Privacy</a>
+        <a class="tab" role="tab" href="support.html" aria-selected="false">Support</a>
+        <a class="tab" role="tab" href="app-features.html" aria-selected="false">App Features</a>
+        <a class="tab" role="tab" href="posts.html" aria-current="page" aria-selected="true">Posts</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Posts & Updates</h1>
+    <p>Educational content about product recalls, safety information, and app updates</p>
+  </section>
+
+  <main class="wrap">
+    <div class="posts-grid">
+      <!-- Featured Post: Recall Classifications -->
+      <article class="post-card">
+        <div class="post-header">
+          <h2 class="post-title">Understanding FDA Recall Classifications</h2>
+          <span class="post-date">September 15, 2025</span>
+        </div>
+        <p class="post-excerpt">Learn about Class I, II, and III recall classifications, what they mean for consumer safety, and the various status stages recalls go through during the FDA process.</p>
+        <div class="post-tags">
+          <span class="tag featured">Featured</span>
+          <span class="tag">FDA</span>
+          <span class="tag">Safety</span>
+          <span class="tag">Education</span>
+        </div>
+        <a href="posts/recall-classifications.html" class="read-more">Read Full Article</a>
+      </article>
+
+      <!-- App Updates -->
+      <article class="post-card">
+        <div class="post-header">
+          <h2 class="post-title">Future Development Agenda</h2>
+          <span class="post-date">May 19, 2025</span>
+        </div>
+        <p class="post-excerpt">Upcoming features and improvements planned for Anytime Recall, including enhanced scanning capabilities and expanded database support.</p>
+        <div class="post-tags">
+          <span class="tag">Updates</span>
+          <span class="tag">Features</span>
+        </div>
+        <a href="posts/2025-05-19-future-agenda.html" class="read-more">Read More</a>
+      </article>
+
+      <!-- Legal Documents -->
+      <article class="post-card">
+        <div class="post-header">
+          <h2 class="post-title">Privacy Policy & Legal Information</h2>
+          <span class="post-date">July 13, 2025</span>
+        </div>
+        <p class="post-excerpt">Updated privacy policy, end-user license agreement, and legal documentation for Anytime Recall users.</p>
+        <div class="post-tags">
+          <span class="tag">Legal</span>
+          <span class="tag">Privacy</span>
+        </div>
+        <a href="privacy.html" class="read-more">View Privacy Policy</a>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

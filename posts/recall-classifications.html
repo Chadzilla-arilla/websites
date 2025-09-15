@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Understanding FDA Recall Classifications • Anytime Recall</title>
+  <meta name="description" content="Complete guide to FDA recall classifications (Class I, II, III) and recall status stages. Learn what each classification means for product safety." />
+  <link rel="icon" href="../res/app-icon.png" />
+  <style>
+    :root{
+      --bg:#ffffff; --bg-2:#f8f9fa; --card:#ffffff; --ink:#1a202c; --muted:#6b7280; --brand:#2563eb; --accent:#0891b2; --border:#e5e7eb; --ok:#22c55e; --warn:#f59e0b; --danger:#dc2626;
+    }
+    html,body{background:var(--bg); color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; margin:0}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:900px; margin:0 auto; padding:24px}
+
+    /* Top Nav */
+    .nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .nav .row{display:flex; align-items:center; gap:14px; padding:10px 16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand img{width:28px; height:28px; border-radius:8px}
+    .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap}
+    .tab{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-2); transition:all 0.2s}
+    .tab[aria-current="page"]{border-color:var(--brand); background:var(--brand); color:white}
+    .tab:hover{transform:translateY(-1px)}
+
+    /* Article Styles */
+    .article-header{text-align:center; padding:48px 24px; background:linear-gradient(135deg, var(--bg-2) 0%, var(--bg) 100%)}
+    .article-title{font-size:clamp(28px, 3vw, 38px); line-height:1.2; margin:0 0 16px; color:var(--ink)}
+    .article-meta{color:var(--muted); margin-bottom:24px}
+    .back-link{display:inline-flex; align-items:center; gap:8px; color:var(--brand); margin-bottom:16px}
+
+    .content{background:var(--card); border-radius:16px; padding:32px; margin:24px 0; box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+    h1{font-size:32px; margin:0 0 24px; color:var(--ink)}
+    h2{font-size:24px; margin:32px 0 16px; color:var(--ink); border-bottom:2px solid var(--border); padding-bottom:8px}
+    h3{font-size:20px; margin:24px 0 12px; color:var(--ink)}
+    p{margin:16px 0; line-height:1.7}
+    ul, ol{margin:16px 0; padding-left:24px}
+    li{margin:8px 0; line-height:1.6}
+
+    /* Classification Cards */
+    .classification-grid{display:grid; gap:24px; margin:32px 0}
+    .class-card{border:1px solid var(--border); border-radius:12px; padding:24px; background:var(--bg-2)}
+    .class-card.class-i{border-left:4px solid var(--danger)}
+    .class-card.class-ii{border-left:4px solid var(--warn)}
+    .class-card.class-iii{border-left:4px solid var(--ok)}
+    .class-header{display:flex; align-items:center; gap:12px; margin-bottom:16px}
+    .class-icon{font-size:24px}
+    .class-title{font-size:20px; font-weight:700; margin:0}
+    .class-severity{font-size:12px; padding:4px 8px; border-radius:12px; color:white; font-weight:600}
+    .class-i .class-severity{background:var(--danger)}
+    .class-ii .class-severity{background:var(--warn)}
+    .class-iii .class-severity{background:var(--ok)}
+
+    /* Status Timeline */
+    .status-timeline{margin:32px 0}
+    .timeline-item{display:flex; gap:16px; margin:24px 0; padding:16px; background:var(--bg-2); border-radius:8px}
+    .timeline-icon{flex-shrink:0; width:40px; height:40px; background:var(--brand); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold}
+    .timeline-content h4{margin:0 0 8px; color:var(--ink)}
+    .timeline-content p{margin:0; color:var(--muted); font-size:14px}
+
+    /* Reference Box */
+    .reference-box{background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:24px; margin:32px 0}
+    .reference-box h3{margin-top:0; color:var(--brand)}
+    .reference-links{list-style:none; padding:0}
+    .reference-links li{margin:8px 0}
+    .reference-links a{color:var(--brand); font-weight:500}
+
+    /* Navigation */
+    .article-nav{display:flex; justify-content:space-between; align-items:center; margin:32px 0; padding:24px 0; border-top:1px solid var(--border)}
+    .nav-link{display:inline-block; padding:12px 24px; background:var(--brand); color:white; border-radius:8px; font-weight:600; transition:all 0.2s}
+    .nav-link:hover{background:var(--accent); text-decoration:none; transform:translateY(-2px)}
+  </style>
+</head>
+<body>
+  <!-- Top navigation -->
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="row wrap">
+      <a class="brand" href="../home.html">
+        <img src="../res/app-icon.png" alt="Anytime Recall icon" />
+        <span>Anytime Recall</span>
+      </a>
+      <div class="tabs" role="tablist">
+        <a class="tab" role="tab" href="../home.html" aria-selected="false">Home</a>
+        <a class="tab" role="tab" href="../privacy.html" aria-selected="false">Privacy</a>
+        <a class="tab" role="tab" href="../support.html" aria-selected="false">Support</a>
+        <a class="tab" role="tab" href="../app-features.html" aria-selected="false">App Features</a>
+        <a class="tab" role="tab" href="../posts.html" aria-current="page" aria-selected="true">Posts</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <a href="../posts.html" class="back-link">← Back to Posts</a>
+    <h1 class="article-title">Understanding FDA Recall Classifications</h1>
+    <div class="article-meta">Published September 15, 2025 • 8 min read</div>
+  </header>
+
+  <main class="wrap">
+    <article class="content">
+      <p>When the FDA issues a product recall, it assigns a classification that indicates the level of health hazard the product poses. Understanding these classifications can help you make informed decisions about recalled products and assess the urgency of the situation.</p>
+
+      <h2>Recall Classifications</h2>
+      <p>The FDA uses a three-tier system to classify recalls based on the severity of the health risk:</p>
+
+      <div class="classification-grid">
+        <div class="class-card class-i">
+          <div class="class-header">
+            <span class="class-icon">🚨</span>
+            <h3 class="class-title">Class I Recall</h3>
+            <span class="class-severity">HIGH RISK</span>
+          </div>
+          <p><strong>Most Serious:</strong> Products that pose a reasonable probability of serious adverse health consequences or death.</p>
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li>Food contaminated with deadly bacteria (e.g., Listeria, E. coli)</li>
+            <li>Medical devices with life-threatening defects</li>
+            <li>Medications with incorrect active ingredients</li>
+            <li>Infant formula with dangerous contamination</li>
+          </ul>
+          <p><strong>Action Required:</strong> Stop using immediately and seek medical attention if you've been exposed.</p>
+        </div>
+
+        <div class="class-card class-ii">
+          <div class="class-header">
+            <span class="class-icon">⚠️</span>
+            <h3 class="class-title">Class II Recall</h3>
+            <span class="class-severity">MODERATE RISK</span>
+          </div>
+          <p><strong>Moderate Risk:</strong> Products that may cause temporary or medically reversible adverse health consequences.</p>
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li>Food with undeclared allergens</li>
+            <li>Medications with incorrect dosage instructions</li>
+            <li>Medical devices with non-life-threatening defects</li>
+            <li>Cosmetics with harmful ingredients</li>
+          </ul>
+          <p><strong>Action Required:</strong> Stop using the product and consult healthcare provider if needed.</p>
+        </div>
+
+        <div class="class-card class-iii">
+          <div class="class-header">
+            <span class="class-icon">ℹ️</span>
+            <h3 class="class-title">Class III Recall</h3>
+            <span class="class-severity">LOW RISK</span>
+          </div>
+          <p><strong>Least Serious:</strong> Products unlikely to cause adverse health consequences but violate FDA regulations.</p>
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li>Food with minor labeling errors</li>
+            <li>Products with incorrect net weight statements</li>
+            <li>Cosmetics with unapproved color additives</li>
+            <li>Minor packaging defects</li>
+          </ul>
+          <p><strong>Action Required:</strong> Use your judgment; health risk is minimal but product may not meet standards.</p>
+        </div>
+      </div>
+
+      <h2>Recall Status Stages</h2>
+      <p>Recalls progress through several status stages as the FDA monitors compliance and effectiveness:</p>
+
+      <div class="status-timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">1</div>
+          <div class="timeline-content">
+            <h4>Ongoing</h4>
+            <p>Recall is active and the company is working to remove products from the market. Consumers should stop using the product immediately.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon">2</div>
+          <div class="timeline-content">
+            <h4>Pending</h4>
+            <p>FDA is reviewing the recall plan or waiting for additional information from the company. Precautionary measures should still be taken.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon">3</div>
+          <div class="timeline-content">
+            <h4>Completed</h4>
+            <p>The company has successfully removed or corrected all recalled products from the market to FDA's satisfaction.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon">4</div>
+          <div class="timeline-content">
+            <h4>Terminated</h4>
+            <p>FDA has determined the recall is no longer necessary, often because the product is past its shelf life or no longer in commerce.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Additional Status Types</h2>
+      <ul>
+        <li><strong>Voluntary:</strong> Company initiates the recall voluntarily</li>
+        <li><strong>FDA Requested:</strong> FDA requests the company to initiate a recall</li>
+        <li><strong>FDA Mandated:</strong> FDA legally requires the recall (rare, used when voluntary efforts fail)</li>
+      </ul>
+
+      <h2>What to Do During a Recall</h2>
+      <ol>
+        <li><strong>Stop using the product immediately</strong> if it's Class I or II</li>
+        <li><strong>Check the lot numbers, dates, and other identifying information</strong> against your products</li>
+        <li><strong>Follow disposal instructions</strong> provided in the recall notice</li>
+        <li><strong>Contact your healthcare provider</strong> if you've used a recalled product and have health concerns</li>
+        <li><strong>Report adverse events</strong> to the FDA through their reporting systems</li>
+        <li><strong>Check for refunds or replacements</strong> as companies often provide remedies</li>
+      </ol>
+
+      <div class="reference-box">
+        <h3>FDA References & Resources</h3>
+        <ul class="reference-links">
+          <li><a href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts" target="_blank" rel="noopener">FDA Recalls, Market Withdrawals, & Safety Alerts</a></li>
+          <li><a href="https://www.fda.gov/about-fda/fda-basics/what-does-fda-do-when-products-are-recalled" target="_blank" rel="noopener">What does FDA do when products are recalled?</a></li>
+          <li><a href="https://www.fda.gov/safety/reporting-serious-problems-fda/how-report-problem-food" target="_blank" rel="noopener">How to Report a Problem with Food</a></li>
+          <li><a href="https://www.fda.gov/drugs/drug-safety-and-availability/drug-recalls" target="_blank" rel="noopener">Drug Recalls Information</a></li>
+          <li><a href="https://www.fda.gov/medical-devices/medical-device-safety/medical-device-recalls" target="_blank" rel="noopener">Medical Device Recalls</a></li>
+          <li><a href="https://www.fda.gov/food/recalls-outbreaks-emergencies/food-safety-recalls" target="_blank" rel="noopener">Food Safety Recalls</a></li>
+        </ul>
+        <p><em>All information is based on official FDA guidelines and classifications. For the most current recall information, always check the official FDA website.</em></p>
+      </div>
+
+      <div class="article-nav">
+        <a href="../posts.html" class="nav-link">← Back to Posts</a>
+        <a href="../app-features.html" class="nav-link">Explore App Features →</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
