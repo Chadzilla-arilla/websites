@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anytime Recall • App Features</title>
+  <meta name="description" content="Anytime Recall app features: scanning methods, supported barcode formats, recall searches, CloudKit sync, data management, and advanced tools." />
+  <link rel="icon" href="/assets/favicon.png" />
+  <style>
+    :root{
+      --bg:#0b0d10; --bg-2:#11151a; --card:#121821; --ink:#e6edf3; --muted:#94a3b8; --brand:#4aa3ff; --accent:#22d3ee; --border:#1f2a37; --ok:#22c55e; --warn:#f59e0b;
+    }
+    html,body{background:var(--bg); color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; margin:0}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+
+    /* Top Nav */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px); background:color-mix(in srgb, var(--bg) 85%, transparent); border-bottom:1px solid var(--border)}
+    .nav .row{display:flex; align-items:center; gap:14px; padding:10px 16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand img{width:28px; height:28px; border-radius:8px}
+    .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap}
+    .tab{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-2)}
+    .tab[aria-current="page"]{border-color:var(--brand); outline:2px solid color-mix(in srgb, var(--brand) 40%, transparent)}
+
+    /* Hero */
+    .hero{padding:24px 0 8px}
+    h1{font-size:clamp(28px, 2.6vw, 38px); line-height:1.2; margin:0 0 8px}
+    .lede{color:var(--muted)}
+
+    /* Toolbar */
+    .toolbar{display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; margin:18px 0}
+    .search{display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:var(--card)}
+    .search input{all:unset; flex:1}
+    .btn{cursor:pointer; border:1px solid var(--border); background:var(--bg-2); color:var(--ink); padding:10px 12px; border-radius:10px}
+    .btn:hover{border-color:var(--brand)}
+
+    /* Layout */
+    .grid{display:grid; grid-template-columns:280px 1fr; gap:18px}
+    @media (max-width:960px){ .grid{grid-template-columns:1fr} }
+
+    /* TOC */
+    .toc{position:sticky; top:66px; border:1px solid var(--border); background:var(--card); border-radius:14px; padding:8px}
+    .toc h3{margin:8px 10px; font-size:15px; color:var(--muted)}
+    .tree{list-style:none; margin:0; padding:6px}
+    .tree li{margin:2px 0}
+    .tree a{display:flex; gap:8px; align-items:center; padding:6px 8px; border-radius:8px}
+    .tree a:hover{background:var(--bg-2)}
+    .tree .child{margin-left:18px}
+
+    /* Sections */
+    section{border:1px solid var(--border); background:var(--card); border-radius:16px; padding:18px; margin:0 0 14px}
+    section h2{display:flex; align-items:center; gap:10px; margin:0 0 8px}
+    .meta{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:13px}
+    .copy{margin-left:auto}
+
+    .k{color:var(--muted)}
+    .badge{display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); background:var(--bg-2); margin-right:6px}
+
+    .hidden{display:none !important}
+    .highlight{background:rgba(74,163,255,.18); outline:1px dashed rgba(74,163,255,.3)}
+
+    /* Back to top */
+    .to-top{display:flex; gap:8px; align-items:center; justify-content:center; margin:26px 0 10px}
+  </style>
+</head>
+<body>
+  <!-- Top navigation (add this block or merge into your existing header include) -->
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="row wrap">
+      <a class="brand" href="/">
+        <img src="/assets/app-icon.png" alt="Anytime Recall icon" />
+        <span>Anytime Recall</span>
+      </a>
+      <div class="tabs" role="tablist">
+        <a class="tab" role="tab" href="/" aria-selected="false">Home</a>
+        <a class="tab" role="tab" href="/privacy.html" aria-selected="false">Privacy</a>
+        <a class="tab" role="tab" href="/support.html" aria-selected="false">Support</a>
+        <a class="tab" role="tab" href="/app-features.html" aria-current="page" aria-selected="true">App Features</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" id="main">
+    <header class="hero" id="header">
+      <h1>App Features</h1>
+      <p class="lede">Explore scanning, supported formats, recall searches, product lookup, iCloud sync, data management, generation tools, and advanced options.</p>
+    </header>
+
+    <div class="toolbar" aria-label="Tools">
+      <label class="search" for="q" title="Search sections and content">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5m-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"/></svg>
+        <input id="q" type="search" placeholder="Search documentation…" autocomplete="off" />
+      </label>
+      <button id="expandAll" class="btn" type="button">Expand all</button>
+    </div>
+
+    <div class="grid">
+      <!-- Table of Contents -->
+      <aside class="toc" aria-label="Table of contents">
+        <h3>Contents</h3>
+        <ul class="tree" id="toc">
+          <li><a href="#overview">ℹ️ App Overview</a>
+            <ul class="child">
+              <li><a href="#scanning-methods">📷 Scanning Methods</a></li>
+              <li><a href="#barcode-formats">🏷️ Supported Formats</a></li>
+              <li><a href="#recall-searches">⚠️ Recall Searches</a></li>
+              <li><a href="#product-identification">🔎 Product Identification</a></li>
+            </ul>
+          </li>
+          <li><a href="#barcode-generation">➕ Barcode Generation</a></li>
+          <li><a href="#data-management">📁 Data Management</a>
+            <ul class="child">
+              <li><a href="#cloud-sync">☁️ iCloud Sync</a></li>
+            </ul>
+          </li>
+          <li><a href="#advanced-features">⚙️ Advanced Features</a>
+            <ul class="child">
+              <li><a href="#barcode-type-detection">🧭 Type Detection</a></li>
+              <li><a href="#logo-overlay">🖼️ QR Logo Overlay</a></li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Content -->
+      <div>
+        <!-- OVERVIEW -->
+        <section id="overview" data-title="App Overview" data-keywords="overview app about safety recalls">
+          <h2>ℹ️ App Overview</h2>
+          <p>Anytime Recall is a comprehensive barcode scanning app that's designed to make it easy to stay informed on product safety. Scan or enter any barcode to begin checking for recalls across multiple US government databases with ease.</p>
+          <ul>
+            <li>Add barcodes by camera, photo, or typing the UPC, VIN, etc.</li>
+            <li>Recall searches performed with key databases: FDA (food, medicine, and devices) and NHTSA (vehicles)</li>
+            <li>View and share detailed recall information</li>
+            <li>Easily back up locally or with iCloud</li>
+          </ul>
+        </section>
+
+        <!-- SCANNING METHODS -->
+        <section id="scanning-methods" data-title="Scanning Methods" data-keywords="camera photo manual entry real-time validation">
+          <h2>📷 Scanning Methods</h2>
+          <p>Add one or more barcodes at a time from a single photo or camera scan. Select the barcodes you want to add from the list and repeat as needed.</p>
+          <ul>
+            <li>Manual entry supported (choose QR or Code 128 for alphanumeric)</li>
+            <li>Real-time validation to reduce typos</li>
+          </ul>
+        </section>
+
+        <!-- BARCODE FORMATS -->
+        <section id="barcode-formats" data-title="Supported Formats" data-keywords="UPC-E EAN-13 EAN-8 Code 39 93 128 ITF QR Data Matrix types">
+          <h2>🏷️ Supported Formats</h2>
+          <p><span class="badge">10 symbologies</span> Camera‑scannable types with on‑device validation. Only barcode values are stored (no photos). Generated images are simple JPEGs. Types marked <em>limited</em> may not always render.</p>
+          <h3>1D Linear (8)</h3>
+          <ul>
+            <li><strong>UPC‑E</strong></li>
+            <li><strong>EAN‑8</strong>, <strong>EAN‑13</strong></li>
+            <li><strong>Code 39</strong> <em>(limited)</em></li>
+            <li><strong>Code 93</strong> <em>(limited)</em></li>
+            <li><strong>Code 128</strong></li>
+            <li><strong>ITF 2‑of‑5</strong></li>
+            <li><strong>ITF‑14</strong> <em>(limited)</em></li>
+          </ul>
+          <h3>2D Matrix (2)</h3>
+          <ul>
+            <li><strong>QR Code</strong></li>
+            <li><strong>Data Matrix</strong> <em>(limited)</em></li>
+          </ul>
+          <p class="k">VINs commonly use Code 39 or Code 128.</p>
+
+          <details>
+            <summary>Technical notes & examples</summary>
+            <ul>
+              <li><strong>Code 128</strong> — Mod‑103; subsets A/B/C; GS1‑128 with AIs. Ex: <code>(01)09506000123451</code>.</li>
+              <li><strong>Code 39</strong> — Optional Mod‑43; Extended supports full ASCII. Ex: <code>*CODE39*</code>.</li>
+              <li><strong>Code 93</strong> — Two checks (C,K) Mod‑47; compact/full ASCII. Ex: <code>CODE93</code>.</li>
+              <li><strong>Data Matrix</strong> — ECC200; GS1 uses AIs. Ex: <code>(01)09506000123451(17)250101(10)LOT123</code>.</li>
+              <li><strong>EAN‑13</strong> — Mod‑10; country prefixes (e.g., 400–440=DE). Ex: <code>4006381333931</code>.</li>
+              <li><strong>EAN‑8</strong> — Mod‑10; fixed length 8. Ex: <code>73513537</code>.</li>
+              <li><strong>ITF 2‑of‑5</strong> — Optional check, even digits only; bearer bars common. Ex: <code>12345670</code>.</li>
+              <li><strong>ITF‑14</strong> — GTIN‑14; Mod‑10. Ex: <code>15400123456782</code>.</li>
+              <li><strong>QR Code</strong> — Reed–Solomon EC; versions 1–40, Micro‑QR, GS1 QR.</li>
+              <li><strong>UPC‑E</strong> — Compresses UPC‑A; may expand to multiple UPC‑A. Ex: <code>04252614</code> → <code>042100005264</code> or <code>042100000264</code>.</li>
+            </ul>
+          </details>
+        </section>
+
+        <!-- RECALL SEARCHES -->
+        <section id="recall-searches" data-title="Recall Searches" data-keywords="FDA NHTSA CPSC FSIS recall results tracking logs">
+          <h2>⚠️ Recall Searches</h2>
+          <h3>Databases</h3>
+          <ul>
+            <li>FDA — food, drugs, medical devices</li>
+            <li>NHTSA — vehicle recalls</li>
+            <li>CPSC — consumer products</li>
+            <li>USDA FSIS — meat & poultry</li>
+          </ul>
+          <h3>Search Features</h3>
+          <ul>
+            <li>UPC variant generation and testing</li>
+            <li>VIN decode & match</li>
+            <li>Historical logs and export</li>
+            <li>API status checks, timeouts, retry logic</li>
+          </ul>
+          <h3>Result Management</h3>
+          <ul>
+            <li>Class I/II/III, reasons, dates</li>
+            <li>Manufacturer & distribution details</li>
+            <li>Save and organize history</li>
+          </ul>
+        </section>
+
+        <!-- PRODUCT IDENTIFICATION -->
+        <section id="product-identification" data-title="Product Identification" data-keywords="OpenFoodFacts UPCItemDB Food Data Central lookup">
+          <h2>🔎 Product Identification</h2>
+          <h3>Databases</h3>
+          <ul>
+            <li>OpenFoodFacts</li>
+            <li>UPCItemDB</li>
+            <li>USDA Food Data Central</li>
+          </ul>
+          <h3>Features</h3>
+          <ul>
+            <li>Automatic name resolution</li>
+            <li>Primary‑barcode focus to reduce API calls</li>
+            <li>Confidence scoring & validation</li>
+            <li>Fallback chain for coverage</li>
+          </ul>
+        </section>
+
+        <!-- CLOUD SYNC -->
+        <section id="cloud-sync" data-title="iCloud Sync" data-keywords="CloudKit encryption tokens conflict resolution background sync">
+          <h2>☁️ iCloud Sync</h2>
+          <h3>Sync</h3>
+          <ul>
+            <li>Real‑time sync across devices</li>
+            <li>Background updates</li>
+            <li>Conflict resolution strategies</li>
+            <li>Offline queue with automatic retry</li>
+          </ul>
+          <h3>Security</h3>
+          <ul>
+            <li>End‑to‑end via CloudKit (private DB)</li>
+            <li>Device identification & change tokens</li>
+          </ul>
+          <h3>Management</h3>
+          <ul>
+            <li>Status & analytics</li>
+            <li>Manual triggers, forced refresh</li>
+            <li>Data size checks & warnings</li>
+            <li>Clear cloud data option</li>
+          </ul>
+        </section>
+
+        <!-- BARCODE GENERATION -->
+        <section id="barcode-generation" data-title="Barcode Generation" data-keywords="JPEG export print quiet zone labels QR logo overlay">
+          <h2>➕ Barcode Generation</h2>
+          <h3>Capabilities</h3>
+          <ul>
+            <li>All supported types with validation</li>
+            <li>High‑resolution output for print</li>
+            <li>Human‑readable labels & quiet zone control</li>
+          </ul>
+          <h3>QR Options</h3>
+          <ul>
+            <li>Logo overlay with error‑correction</li>
+            <li>Data encoding choices, version & EC level</li>
+          </ul>
+          <h3>Export</h3>
+          <ul>
+            <li>JPEG format</li>
+            <li>Share via Mail, Messages, AirDrop</li>
+            <li>Save to Photos or Files</li>
+          </ul>
+          <h3>Validation</h3>
+          <ul>
+            <li>Checksum and pattern checks</li>
+            <li>Confidence scoring</li>
+          </ul>
+        </section>
+
+        <!-- DATA MANAGEMENT -->
+        <section id="data-management" data-title="Data Management" data-keywords="export import JSON logs dedupe">
+          <h2>📁 Data Management</h2>
+          <ul>
+            <li>Full JSON export</li>
+            <li>Import with merge</li>
+            <li>Detailed search logs & API tracking</li>
+            <li>Deduplication & cleanup</li>
+          </ul>
+        </section>
+
+        <!-- ADVANCED FEATURES -->
+        <section id="advanced-features" data-title="Advanced Features" data-keywords="accessibility VoiceOver large text keyboard background refresh share clipboard">
+          <h2>⚙️ Advanced Features</h2>
+          <ul>
+            <li>Multi‑select bulk deletion</li>
+          </ul>
+          <h3>Accessibility</h3>
+          <ul>
+            <li>VoiceOver throughout</li>
+            <li>Dynamic Type / large text</li>
+            <li>High‑contrast colors</li>
+            <li>Keyboard navigation</li>
+            <li>Comprehensive hints</li>
+          </ul>
+          <h3>iOS Integration</h3>
+          <ul>
+            <li>Background app refresh for CloudKit</li>
+            <li>Native share sheets (AirDrop, Messages, Mail)</li>
+            <li>Clipboard support for barcode data</li>
+          </ul>
+        </section>
+
+        <!-- TYPE DETECTION -->
+        <section id="barcode-type-detection" data-title="Type Detection" data-keywords="manual selection auto analysis multiple formats">
+          <h2>🧭 Type Detection</h2>
+          <p><strong>Manual Barcode Type Selection</strong> lets you choose how a scan is interpreted when multiple formats are detected.</p>
+          <ul>
+            <li><strong>Enabled:</strong> you pick the type from detected options.</li>
+            <li><strong>Disabled:</strong> app auto‑selects using length, charset, checks, prefixes, and confidence.</li>
+          </ul>
+          <p>Useful for pro environments, QA, education, and damaged codes.</p>
+        </section>
+
+        <!-- LOGO OVERLAY -->
+        <section id="logo-overlay" data-title="QR Logo Overlay" data-keywords="qr logo overlay error correction branding">
+          <h2>🖼️ QR Logo Overlay</h2>
+          <ul>
+            <li><strong>Enabled:</strong> adds the Anytime Recall logo while maintaining error correction.</li>
+            <li><strong>Disabled:</strong> plain QR codes.</li>
+          </ul>
+          <p>Designed for dark/light modes and suitable for documents or marketing materials.</p>
+        </section>
+
+        <p class="to-top"><a class="btn" href="#header">↑ Back to top</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Simple client-side search filtering + highlight
+    const q = document.getElementById('q');
+    const sections = [...document.querySelectorAll('main section')];
+
+    function clearHighlights(){
+      document.querySelectorAll('.highlight').forEach(n=>{
+        n.outerHTML = n.textContent;
+      });
+    }
+    function highlight(node, term){
+      if(!term) return;
+      const walk = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+      const pieces = [];
+      while(walk.nextNode()) pieces.push(walk.currentNode);
+      const rx = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      for(const t of pieces){
+        if(!t.nodeValue.trim()) continue;
+        if(rx.test(t.nodeValue)){
+          t.parentNode.innerHTML = t.parentNode.innerHTML.replace(rx, m=>`<mark class="highlight">${m}</mark>`);
+        }
+      }
+    }
+
+    q.addEventListener('input', ()=>{
+      const term = q.value.trim();
+      clearHighlights();
+      let anyVisible = false;
+      sections.forEach(sec=>{
+        const hay = (sec.dataset.title+" "+sec.dataset.keywords+" "+sec.textContent).toLowerCase();
+        const show = !term || hay.includes(term.toLowerCase());
+        sec.classList.toggle('hidden', !show);
+        if(show) { anyVisible = true; highlight(sec, term); }
+      });
+      document.getElementById('expandAll').textContent = 'Expand all';
+    });
+
+    // Expand/collapse <details>
+    document.getElementById('expandAll').addEventListener('click', (e)=>{
+      const btn = e.currentTarget;
+      const open = btn.textContent.includes('Collapse');
+      document.querySelectorAll('details').forEach(d=> d.open = !open);
+      btn.textContent = open ? 'Expand all' : 'Collapse all';
+    });
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); history.pushState(null, '', '#'+id); }
+      });
+    });
+  </script>
+</body>
+</html>
