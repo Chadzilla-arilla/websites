@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anytime Recall • Support</title>
+  <meta name="description" content="Get support for Anytime Recall iOS app. Contact us for help, questions, or feedback." />
+  <link rel="icon" href="/assets/favicon.png" />
+  <style>
+    :root{
+      --bg:#ffffff; --bg-2:#f8f9fa; --card:#ffffff; --ink:#1a202c; --muted:#6b7280; --brand:#2563eb; --accent:#0891b2; --border:#e5e7eb; --ok:#22c55e; --warn:#f59e0b;
+    }
+    html,body{background:var(--bg); color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; margin:0}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:900px; margin:0 auto; padding:24px}
+
+    /* Top Nav */
+    .nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .nav .row{display:flex; align-items:center; gap:14px; padding:10px 16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand img{width:28px; height:28px; border-radius:8px}
+    .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap}
+    .tab{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-2); transition:all 0.2s}
+    .tab[aria-current="page"]{border-color:var(--brand); background:var(--brand); color:white}
+    .tab:hover{transform:translateY(-1px)}
+
+    /* Content */
+    .content{background:var(--card); border-radius:16px; padding:32px; margin:24px 0; box-shadow:0 1px 3px rgba(0,0,0,0.05); text-align:center; min-height:400px; display:flex; flex-direction:column; justify-content:center}
+    h1{font-size:clamp(32px, 3vw, 42px); line-height:1.2; margin:0 0 24px; color:var(--ink)}
+    p{margin:16px 0; line-height:1.7; font-size:18px}
+    .contact-section{margin:32px 0; padding:32px; background:var(--bg-2); border-radius:12px; display:inline-block}
+    .contact-label{color:var(--muted); margin-bottom:12px; font-size:14px; text-transform:uppercase; letter-spacing:0.5px}
+    .contact-link{font-size:20px; font-weight:600; display:inline-block; padding:12px 24px; background:var(--brand); color:white; border-radius:8px; transition:all 0.2s}
+    .contact-link:hover{background:var(--accent); text-decoration:none; transform:translateY(-2px)}
+    .icon{font-size:48px; margin-bottom:24px}
+  </style>
+</head>
+<body>
+  <!-- Top navigation -->
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="row wrap">
+      <a class="brand" href="/">
+        <img src="/assets/app-icon.png" alt="Anytime Recall icon" />
+        <span>Anytime Recall</span>
+      </a>
+      <div class="tabs" role="tablist">
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!posts.md" aria-selected="false">Home</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!privacy.md" aria-selected="false">Privacy</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!./people/site-admin.md" aria-current="page" aria-selected="true">Support</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/app-features.html" aria-selected="false">App Features</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="content">
+      <div class="icon">📧</div>
+      <h1>Support</h1>
+      <p>Have questions about Anytime Recall? Need help with the app?<br/>We're here to help!</p>
+
+      <div class="contact-section">
+        <div class="contact-label">Contact Support</div>
+        <a class="contact-link" href="mailto:xggm8ybptt@privaterelay.appleid.com">Send Email</a>
+      </div>
+
+      <p>For the fastest response, please include:</p>
+      <ul style="display:inline-block; text-align:left; margin:24px auto;">
+        <li>Your device model and iOS version</li>
+        <li>A description of the issue you're experiencing</li>
+        <li>Any error messages you've encountered</li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

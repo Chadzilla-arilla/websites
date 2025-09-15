@@ -8,7 +8,7 @@
   <link rel="icon" href="/assets/favicon.png" />
   <style>
     :root{
-      --bg:#0b0d10; --bg-2:#11151a; --card:#121821; --ink:#e6edf3; --muted:#94a3b8; --brand:#4aa3ff; --accent:#22d3ee; --border:#1f2a37; --ok:#22c55e; --warn:#f59e0b;
+      --bg:#ffffff; --bg-2:#f8f9fa; --card:#ffffff; --ink:#1a202c; --muted:#6b7280; --brand:#2563eb; --accent:#0891b2; --border:#e5e7eb; --ok:#22c55e; --warn:#f59e0b;
     }
     html,body{background:var(--bg); color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; margin:0}
     a{color:var(--brand); text-decoration:none}
@@ -16,13 +16,13 @@
     .wrap{max-width:1100px; margin:0 auto; padding:24px}
 
     /* Top Nav */
-    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px); background:color-mix(in srgb, var(--bg) 85%, transparent); border-bottom:1px solid var(--border)}
+    .nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,0.1)}
     .nav .row{display:flex; align-items:center; gap:14px; padding:10px 16px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700}
     .brand img{width:28px; height:28px; border-radius:8px}
     .tabs{display:flex; gap:6px; margin-left:auto; flex-wrap:wrap}
-    .tab{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-2)}
-    .tab[aria-current="page"]{border-color:var(--brand); outline:2px solid color-mix(in srgb, var(--brand) 40%, transparent)}
+    .tab{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:var(--bg-2); transition:all 0.2s}
+    .tab[aria-current="page"]{border-color:var(--brand); background:var(--brand); color:white}
 
     /* Hero */
     .hero{padding:24px 0 8px}
@@ -31,35 +31,35 @@
 
     /* Toolbar */
     .toolbar{display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; margin:18px 0}
-    .search{display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:var(--card)}
+    .search{display:flex; align-items:center; gap:8px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; background:var(--bg-2)}
     .search input{all:unset; flex:1}
-    .btn{cursor:pointer; border:1px solid var(--border); background:var(--bg-2); color:var(--ink); padding:10px 12px; border-radius:10px}
-    .btn:hover{border-color:var(--brand)}
+    .btn{cursor:pointer; border:1px solid var(--border); background:var(--bg-2); color:var(--ink); padding:10px 12px; border-radius:10px; transition:all 0.2s}
+    .btn:hover{border-color:var(--brand); background:var(--brand); color:white}
 
     /* Layout */
     .grid{display:grid; grid-template-columns:280px 1fr; gap:18px}
     @media (max-width:960px){ .grid{grid-template-columns:1fr} }
 
     /* TOC */
-    .toc{position:sticky; top:66px; border:1px solid var(--border); background:var(--card); border-radius:14px; padding:8px}
+    .toc{position:sticky; top:66px; border:1px solid var(--border); background:var(--bg-2); border-radius:14px; padding:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05)}
     .toc h3{margin:8px 10px; font-size:15px; color:var(--muted)}
     .tree{list-style:none; margin:0; padding:6px}
     .tree li{margin:2px 0}
     .tree a{display:flex; gap:8px; align-items:center; padding:6px 8px; border-radius:8px}
-    .tree a:hover{background:var(--bg-2)}
+    .tree a:hover{background:var(--bg-2); color:var(--brand)}
     .tree .child{margin-left:18px}
 
     /* Sections */
-    section{border:1px solid var(--border); background:var(--card); border-radius:16px; padding:18px; margin:0 0 14px}
+    section{border:1px solid var(--border); background:var(--card); border-radius:16px; padding:18px; margin:0 0 14px; box-shadow:0 1px 3px rgba(0,0,0,0.05)}
     section h2{display:flex; align-items:center; gap:10px; margin:0 0 8px}
     .meta{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:13px}
     .copy{margin-left:auto}
 
     .k{color:var(--muted)}
-    .badge{display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); background:var(--bg-2); margin-right:6px}
+    .badge{display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); background:var(--bg-2); margin-right:6px; color:var(--muted)}
 
     .hidden{display:none !important}
-    .highlight{background:rgba(74,163,255,.18); outline:1px dashed rgba(74,163,255,.3)}
+    .highlight{background:rgba(37,99,235,.15); outline:1px dashed rgba(37,99,235,.3)}
 
     /* Back to top */
     .to-top{display:flex; gap:8px; align-items:center; justify-content:center; margin:26px 0 10px}
@@ -74,10 +74,10 @@
         <span>Anytime Recall</span>
       </a>
       <div class="tabs" role="tablist">
-        <a class="tab" role="tab" href="/" aria-selected="false">Home</a>
-        <a class="tab" role="tab" href="/privacy.html" aria-selected="false">Privacy</a>
-        <a class="tab" role="tab" href="/support.html" aria-selected="false">Support</a>
-        <a class="tab" role="tab" href="/app-features.html" aria-current="page" aria-selected="true">App Features</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!posts.md" aria-selected="false">Home</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!privacy.md" aria-selected="false">Privacy</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/#!./people/site-admin.md" aria-selected="false">Support</a>
+        <a class="tab" role="tab" href="https://chadzilla-arilla.github.io/websites/app-features.html" aria-current="page" aria-selected="true">App Features</a>
       </div>
     </div>
   </nav>
