@@ -1,0 +1,7 @@
+# Local/IDE state
+.claude/
+
+# Tooling and generated viewers (do not publish)
+.tkgitviz/
+tools/
+viewer/
